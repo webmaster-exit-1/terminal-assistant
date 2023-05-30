@@ -1,0 +1,6 @@
+# More Info for OpenAI can be found here: https://pypi.org/project/openai/#description
+openai==0.27.7
+openai[embeddings]
+openai[wandb]
+openai[datalib]
+gtts==2.3.2
