@@ -5,7 +5,8 @@ import os
 import subprocess
 
 # Set your API key
-openai.api_key = ''
+# Get your api key here: https://platform.openai.com/account/api-keys
+openai.api_key = '' # Replace with your OpenAI API Key 
 
 # Define the function for interacting with the GPT model
 def ask_gpt(prompt, model="gpt-3.5-turbo", tokens=2500):
@@ -23,6 +24,7 @@ def ask_gpt(prompt, model="gpt-3.5-turbo", tokens=2500):
     return response.choices[0].message['content']
 
 # Function to perform Google Custom Search
+# Get your keys and id's here: https://programmablesearchengine.google.com/about/
 def perform_custom_search(search_query):
     API_KEY = ""  # Replace with your API key
     SEARCH_ENGINE_ID = ""  # Replace with your search engine ID
