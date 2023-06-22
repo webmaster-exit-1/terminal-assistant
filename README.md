@@ -1,5 +1,7 @@
 # Shelby - Your Personal Chatbot Assistant
 
+## NEW TESTING UPDATE NOW HAS CUSTOM GOOGLE SEARCH with command `!search`
+
 Shelby is a personal chatbot assistant that can help you with various tasks. \
 It is powered by OpenAI's GPT-3 language model and can provide new and interesting replies to your queries. \
 Shelby is also a great programmer and enjoys teaching. \
