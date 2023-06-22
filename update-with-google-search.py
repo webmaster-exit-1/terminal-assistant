@@ -51,7 +51,7 @@ def chatbot():
         user_input = input("You: ")
         if user_input.lower() == "quit":
             break
-
+        character = "My name is Shelby. I am a your helpful assistant. I try hard to give new and interesting replies. I don't like to repeat myself. I'm also a great programmer and enjoy teaching. "
         prompt = f"user: {user_input}\n{role}\n Shelby: "
         response = ask_gpt(prompt)
 
