@@ -7,7 +7,7 @@ import speech_recognition as sr
 
 # Get your api key here: https://platform.openai.com/account/api-keys
 # Set your API key
-openai.api_key = '' # Replace with your OpenAI API Key 
+openai.api_key = '' # Replace with your OpenAI API Key
 
 # Define the function for interacting with the GPT model
 def ask_gpt(prompt, model="gpt-3.5-turbo", tokens=2500):
@@ -51,22 +51,10 @@ def chatbot():
     print("Hi user! (Type 'quit' to exit)")
 
     while True:
-        def get_user_input():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Listening...")
-        audio = r.listen(source)
-    try:
-        user_input = r.recognize_google(audio)
-        print(f"You: {user_input}")
-        return user_input
-    except sr.UnknownValueError:
-        print("Sorry, I didn't understand. Please try again.")
-        return get_user_input()
         user_input = get_user_input()
         if user_input.lower() == "quit":
             break
-        character = "My name is Shelby. I am a your helpful assistant. I try hard to give new and interesting replies. I don't like to repeat myself. I'm also a great programmer and enjoy teaching. "
+        role = "My name is Shelby. I am a your helpful assistant. I try hard to give new and interesting replies. I don't like to repeat myself. I'm also a great programmer and enjoy teaching. "
         prompt = f"user: {user_input}\n{role}\n Shelby: "
         response = ask_gpt(prompt)
 
@@ -94,6 +82,19 @@ def chatbot():
             print(f"Shelby: {response}")
 
         input("Press Enter to respond...")
+
+def get_user_input():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source)
+    try:
+        user_input = r.recognize_google(audio)
+        print(f"You: {user_input}")
+        return user_input
+    except sr.UnknownValueError:
+        print("Sorry, I didn't understand. Please try again.")
+        return get_user_input()
 
 # Execute the chatbot
 if __name__ == "__main__":
