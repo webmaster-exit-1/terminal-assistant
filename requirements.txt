@@ -1,11 +1,4 @@
-# More Info for OpenAI can be found here: https://pypi.org/project/openai/#description
-openai
-openai[embeddings]
-openai[wandb]
-openai[datalib]
-gtts
-mpg123
-requests
-pyaudio
-SpeechRecognition
-python3-nmap
+gTTS==2.3.1
+openai==0.27.2
+pyaudio==0.2.13
+Requests==2.31.0
