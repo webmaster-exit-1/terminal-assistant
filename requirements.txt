@@ -8,4 +8,4 @@ mpg123
 requests
 pyaudio
 SpeechRecognition
-nmap3
+python3-nmap
