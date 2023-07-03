@@ -1,4 +1,5 @@
-gTTS==2.3.1
+gTTS==2.2.3
 openai==0.27.2
 pyaudio==0.2.13
 Requests==2.31.0
+mpg123

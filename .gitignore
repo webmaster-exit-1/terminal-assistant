@@ -1,2 +1,7 @@
 .git_token
-venv/*
+venv/*.git
+.dist
+.trunk
+.git_token
+testbot_auth.ini
+output.mp3
