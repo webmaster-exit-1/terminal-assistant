@@ -1,5 +1,8 @@
 import openai
 import requests
+import matplotlib.pyplot as plt
+import numpy as np
+import sounddevice as sd
 from gtts import gTTS
 import os
 import subprocess
@@ -93,11 +96,42 @@ def perform_custom_search(search_query):
     results = response.json().get("items", [])
     return results
 
+# Set up the plot
+fig, ax = plt.subplots()
+line, = ax.plot([], [])
+ax.set_xlim(0, 1000)  # Adjust the x-axis limits according to your needs
+ax.set_ylim(-1, 1)  # Adjust the y-axis limits according to your needs
+
+# Callback function for audio playback
+def audio_callback(outdata, frames, time, status):
+    # Generate silence if no audio data is available
+    if len(audio_data) == 0:
+        outdata.fill(0)
+        return
+
+    # Copy the audio data to the output buffer
+    outdata[:len(audio_data)] = audio_data
+
+    # Remove the audio data that has been played
+    del audio_data[:len(outdata)]
+
 # Function to generate speech from text using gTTS
 def generate_speech(text):
     tts = gTTS(text=text, lang="en")
     tts.save("./output.mp3")
-    subprocess.run(["mpg123", "./output.mp3"])
+
+    # Load the audio data from the generated file
+    audio_data, _ = sd.read("./output.mp3", dtype=np.float32)
+
+    # Create an audio stream for playback
+    with sd.OutputStream(callback=audio_callback):
+        # Clear the plot
+        line.set_data([], [])
+
+        # Display the plot
+        plt.show()
+
+#    subprocess.run(["mpg123", "./output.mp3"])
 
 # Function to perform Nmap scan
 def perform_nmap_scan(target):
@@ -116,6 +150,8 @@ def chatbot():
     print("Hi user! (Type 'quit' to exit)")
 
     role = "Kitty, the Talkative Catgirl"
+    user_input = "" # Initialize the variable
+
     while True:
         user_input = recognize_speech() if not user_input.strip() else user_input
         prompt = f"user: {user_input}"

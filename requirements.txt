@@ -1,5 +1,7 @@
-gTTS==2.2.3
+gTTS==2.3.1
+matplotlib==3.7.1
+numpy==1.24.3
 openai==0.27.2
 pyaudio==0.2.13
 Requests==2.31.0
-mpg123
+sounddevice==0.4.6
