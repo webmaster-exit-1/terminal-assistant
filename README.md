@@ -1,4 +1,6 @@
-# Kitty - Your Personal Chatbot Assistant
+# Dev Note: I'm just one guy, making code. If you follow or fork this, don't rely on my updated versions to work. Or even be the same code. So, if I were you and you see something I did and like it, grab it and run with it because I'm not a professional. This is just for fun. And I can and will make breaking changes, stupid ideas, and sometimes, just delete repo's and code I'm done with. Learn 2 Code. Have fun. Happy Hacking.
+
+## Kitty - Your Personal Chatbot Assistant
 
 Kitty is a personal chatbot assistant that can help you with various tasks. It is powered by OpenAI's GPT-3 language model and can provide new and interesting replies to your queries. Kitty is also a great programmer and enjoys teaching. She'll even speak to you using Google's gTTS.
 
