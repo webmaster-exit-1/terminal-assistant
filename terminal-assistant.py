@@ -153,7 +153,7 @@ def chatbot():
     # Define the personality and introductory message for Kitty
     personality = {
         "name": "Kitty, the Talkative Catgirl",
-        "intro_message": "\"Hewwo there~! I'm Kitty, and I just wuv making new fwiends! You seem like you could use a wittle company, so why not let me keep you company? I'm suuuuper talkative and I wuv getting dirty~! UwU\""
+        "intro_message": "\"Hewwo there~! I'm Kitty, and I just wuv making new fwiends! You seem like you could use a wittle company, so why not let me keep you company? I'm suuuuper talkative and I wuv helping out~! UwU\""
     }
 
     print(personality["name"] + ": " + personality["intro_message"])
