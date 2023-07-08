@@ -1,8 +1,7 @@
 import openai
 import requests
-import matplotlib.pyplot as plt
-import numpy as np
 import sounddevice as sd
+import numpy as np
 from gtts import gTTS
 import os
 import subprocess
@@ -96,25 +95,6 @@ def perform_custom_search(search_query):
     results = response.json().get("items", [])
     return results
 
-# Set up the plot
-fig, ax = plt.subplots()
-line, = ax.plot([], [])
-ax.set_xlim(0, 1000)  # Adjust the x-axis limits according to your needs
-ax.set_ylim(-1, 1)  # Adjust the y-axis limits according to your needs
-
-# Callback function for audio playback
-def audio_callback(outdata, frames, time, status):
-    # Generate silence if no audio data is available
-    if len(audio_data) == 0:
-        outdata.fill(0)
-        return
-
-    # Copy the audio data to the output buffer
-    outdata[:len(audio_data)] = audio_data
-
-    # Remove the audio data that has been played
-    del audio_data[:len(outdata)]
-
 # Function to generate speech from text using gTTS
 def generate_speech(text):
     tts = gTTS(text=text, lang="en")
@@ -125,11 +105,7 @@ def generate_speech(text):
 
     # Create an audio stream for playback
     with sd.OutputStream(callback=audio_callback):
-        # Clear the plot
-        line.set_data([], [])
-
-        # Display the plot
-        plt.show()
+        pass
 
 # Function to perform Nmap scan
 def perform_nmap_scan(target):
