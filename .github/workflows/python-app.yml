@@ -28,8 +28,8 @@ jobs:
         wget http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz; tar -xvvf pa_stable_v190700_20210406.tgz; cd portaudio; ./configure; make; sudo make install
         cd /home/runner/work/terminal-assistant/terminal-assistant
         python3.10 -m pip install --upgrade pip setuptools wheel
-        python3.10 -m pip install flake8 pytest
+        python3.10 -m pip install pytest-flask
         python3.10 -m pip install openai==0.27.8 pyaudio==0.2.13 gtts==2.3.2 speechrecognition==3.10.0 keyboard==0.13.5 requests==2.31.0 
-    - name: Test with pytest
+    - name: Test with pytest-flask
       run: |
-        pytest terminal-assistant.py
+        pytest
