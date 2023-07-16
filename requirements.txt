@@ -3,3 +3,4 @@ openai==0.27.2
 pydub==0.25.1
 Requests==2.31.0
 SpeechRecognition==3.10.0
+ffmpeg==1.4
