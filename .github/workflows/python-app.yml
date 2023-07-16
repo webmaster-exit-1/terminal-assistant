@@ -25,6 +25,7 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
+        python3.10 -m pip install http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz
         python3.10 -m pip install --upgrade pip setuptools wheel
         python3.10 -m pip install flake8 pytest
         python3.10 -m pip install -r requirements.txt
