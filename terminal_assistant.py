@@ -5,8 +5,8 @@ This module provides a terminal assistant using OpenAI's GPT-4 model.
 import time
 import os
 import subprocess
-import sys
 from configparser import ConfigParser
+import sys
 import speech_recognition as sr
 import requests
 from pydub import AudioSegment
