@@ -4,7 +4,6 @@ import time
 import os
 import subprocess
 from configparser import ConfigParser
-import json
 import speech_recognition as sr
 import requests
 from pydub import AudioSegment
@@ -121,6 +120,7 @@ def perform_google_search(query):
 def play_audio():
     sound = AudioSegment.from_mp3("output.mp3")
     play(sound)
+
 
 # Chatbot loop
 def chatbot():
