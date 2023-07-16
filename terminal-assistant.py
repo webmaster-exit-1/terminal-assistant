@@ -10,6 +10,7 @@ import json
 import speech_recognition as sr
 import pyaudio
 import keyboard
+import requests
 
 config = ConfigParser()
 CONFIG_NAME = 'testbot_auth.ini'
@@ -64,7 +65,6 @@ def generate_speech(text):
     gtts = gTTS(text=text, lang="en-au")
     gtts.save("output.mp3")
 
-
 # Speech recognition function using Google Speech Recognition
 def recognize_speech():
     r = sr.Recognizer()
@@ -84,7 +84,6 @@ def recognize_speech():
     except sr.RequestError as e:
         print("Error: {0}".format(e))
         return ""
-
 
 # Function to perform a Google search using the Custom Search JSON API
 def perform_google_search(query):
@@ -116,7 +115,7 @@ def chatbot():
         I'm also funny, witty, charming, and of course, feminine. "
 
     while True:
-        if keyboard.is_pressed("shift+enter"):
+        if keyboard.is_pressed("shift") and keyboard.is_pressed("enter"):
             user_input = recognize_speech()
         else:
             user_input = input("You: ")
@@ -135,13 +134,12 @@ def chatbot():
         generate_speech(response)
 
         # Play the speech audio
-        os.system("mpg123 -q output.mp3")
+        subprocess.call(['mpg123', '-q', 'output.mp3'])
 
         print(f"Shelby: {response}")
 
-        if not keyboard.is_pressed("shift+enter"):
+        if not keyboard.is_pressed("shift") or not keyboard.is_pressed("enter"):
             time.sleep(3)
-
 
 # Execute the chatbot
 if __name__ == "__main__":
