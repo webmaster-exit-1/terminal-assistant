@@ -1,21 +1,20 @@
 import openai
-import requests
-import sounddevice as sd
-import numpy as np
 from gtts import gTTS
+import time
 import os
 import subprocess
-from nmap3 import Nmap
+
 from configparser import ConfigParser
 import json
+
 import speech_recognition as sr
 import pyaudio
+import keyboard
 
 config = ConfigParser()
 CONFIG_NAME = 'testbot_auth.ini'
 
 # Config
-
 def create_config():
     openai_key = input("OpenAI API key: ")
     googleapi_api_key = input("GoogleAPI key: ")
@@ -45,140 +44,104 @@ API_KEY = config['AUTH']['googleapi_key']
 SEARCH_ENGINE_ID = config['AUTH']['googleapi_search_id']
 ENDPOINT = "https://www.googleapis.com/customsearch/v1"
 
-# Initialize the recognizer
-r = sr.Recognizer()
-
-# Function to perform speech recognition
-def recognize_speech(audio_data=None):
-    # Create an instance of PyAudio
-    audio = pyaudio.PyAudio()
-
-    if audio_data is None:
-        # Open a stream for recording
-        with sr.Microphone() as source:
-            print("Listening...")
-            audio_data = r.record(source, duration=5)  # Record audio for 5 seconds
-
-    # Perform speech recognition
-    try:
-        text = r.recognize_google(audio_data)
-        print("Recognized text:", text)
-        return text
-    except sr.UnknownValueError:
-        print("Speech recognition could not understand audio")
-    except sr.RequestError as e:
-        print("Could not request results from Google Speech Recognition service:", str(e))
-
 # Define the function for interacting with the GPT model
-def ask_gpt(prompt, model="gpt-3.5-turbo", tokens=2500):
+def ask_gpt(prompt, model="gpt-4", tokens=2500):
     response = openai.ChatCompletion.create(
         model=model,
         messages=[
-            {"role": "system", "content": "You are playing the role of Kitty, the Talkative Catgirl."},
+            {"role": "system", "content": "You are a helpful assistant"},
             {"role": "user", "content": prompt}
         ],
         max_tokens=tokens,
         n=1,
         stop=None,
-        temperature=0.8,
+        temperature=0.7,
     )
     return response.choices[0].message['content']
 
-# Function to perform Google Custom Search
-def perform_custom_search(search_query):
-    params = {
-        "key": API_KEY,
-        "cx": SEARCH_ENGINE_ID,
-        "q": search_query
-    }
-    response = requests.get(ENDPOINT, params=params)
-    results = response.json().get("items", [])
-    return results
-
-# Function to generate speech from text using gTTS
+# Generate speech from text using gTTS
 def generate_speech(text):
-    tts = gTTS(text=text, lang="en")
-    tts.save("./output.mp3")
+    gtts = gTTS(text=text, lang="en-au")
+    gtts.save("output.mp3")
 
-    # Load the audio data from the generated file
-    audio_data, _ = sd.read("./output.mp3", dtype=np.float32)
 
-    # Create an audio stream for playback
-    with sd.OutputStream(callback=audio_callback):
-        pass
+# Speech recognition function using Google Speech Recognition
+def recognize_speech():
+    r = sr.Recognizer()
 
-# Function to perform Nmap scan
-def perform_nmap_scan(target):
-    nmap = Nmap()
+    with sr.Microphone() as source:
+        print("Speak:")
+        audio = r.listen(source)
 
-    # Perform an Nmap scan
-    results = nmap.scan_top_ports(target)
+    try:
+        print("Recognizing...")
+        text = r.recognize_google(audio)
+        print("You:", text)
+        return text
+    except sr.UnknownValueError:
+        print("Could not understand audio.")
+        return ""
+    except sr.RequestError as e:
+        print("Error: {0}".format(e))
+        return ""
 
-    # Get the scan results
-    scan_results = results[target]
 
-    return scan_results
+# Function to perform a Google search using the Custom Search JSON API
+def perform_google_search(query):
+    params = {
+        'key': API_KEY,
+        'cx': SEARCH_ENGINE_ID,
+        'q': query
+    }
+
+    response = requests.get(ENDPOINT, params=params)
+    search_results = response.json()
+
+    if 'items' in search_results:
+        results = search_results['items']
+        for result in results:
+            print(result['title'])
+            print(result['link'])
+            print(result['snippet'])
+            print()
+    else:
+        print("No results found.")
 
 # Chatbot loop
 def chatbot():
-    print("Hi user! (Type 'quit' to exit)")
-
-    role = "Kitty, the Talkative Catgirl"  # Set the initial role to the character name
-    user_input = "" # Initialize the variable
-
-    # Define the personality and introductory message for Kitty
-    personality = {
-        "name": "Kitty, the Talkative Catgirl",
-        "intro_message": "\"Hewwo there~! I'm Kitty, and I just wuv making new fwiends! You seem like you could use a wittle company, so why not let me keep you company? I'm suuuuper talkative and I wuv helping out~! UwU\""
-    }
-
-    print(personality["name"] + ": " + personality["intro_message"])
+    print("Hi $USER, I'm Shelby. (Type 'quit' to exit)")
+    role = "My name is Shelby, \
+        I am your helpful assistant. \
+        I try hard to give new and interesting replies. \
+        I'm also funny, witty, charming, and of course, feminine. "
 
     while True:
-        user_input = recognize_speech() if not user_input.strip() else user_input
-        prompt = f"user: {user_input}"
-        response = f" {ask_gpt(prompt)}"
-
-        # Check if the user input is a search query
-        if user_input.startswith("!search"):
-            search_query = user_input[len("!search"):].strip()
-            results = perform_custom_search(search_query)
-
-            # Display search results
-            if results:
-                print("Search Results:")
-                for result in results:
-                    print(f"Title: {result['title']}")
-                    print(f"URL: {result['link']}")
-                    print(f"Description: {result['snippet']}")
-                    print()
-            else:
-                print("No results found.")
-
-        # Check if the user input is an Nmap command
-        elif user_input.startswith("!nmap"):
-            target = user_input[len("!nmap"):].strip()
-            results = perform_nmap_scan(target)
-
-            # Display Nmap scan results
-            if results:
-                print("Nmap Scan Results:")
-                for host, ports in results.items():
-                    print(f"Host: {host}")
-                    for port, data in ports.items():
-                        print(f"Port: {port}")
-                        print(f"Service: {data['service']}")
-                        print()
-            else:
-                print("No results found.")
-
+        if keyboard.is_pressed("shift+enter"):
+            user_input = recognize_speech()
         else:
-            # Generate speech from the chatbot's response
-            generate_speech(response)
+            user_input = input("You: ")
 
-            print(f"{role}: {response}")
+        if user_input.lower() == "quit":
+            break
+        elif user_input.startswith('!search'):
+            query = user_input[8:]
+            perform_google_search(query)
+            continue
 
-        input("Press Enter to respond...")
+        prompt = f"User: {user_input}\n{role}\nShelby: "
+        response = ask_gpt(prompt)
+
+        # Generate speech from the chatbot's response
+        generate_speech(response)
+
+        # Play the speech audio
+        os.system("mpg123 -q output.mp3")
+
+        print(f"Shelby: {response}")
+
+        if not keyboard.is_pressed("shift+enter"):
+            time.sleep(3)
+
 
 # Execute the chatbot
 if __name__ == "__main__":
