@@ -3,4 +3,4 @@ gtts==2.2.3
 pyaudio==0.2.11
 speechrecognition==3.8.1
 keyboard==0.13.5
-requests==2.26.0
+requests==2.31.0
