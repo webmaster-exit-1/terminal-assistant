@@ -32,4 +32,4 @@ jobs:
         python3.10 -m pip install openai==0.27.8 pyaudio==0.2.13 gtts==2.3.2 speechrecognition==3.10.0 keyboard==0.13.5 requests==2.31.0 
     - name: Test with pytest
       run: |
-        pytest
+        pytest terminal-assistant.py
