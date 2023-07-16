@@ -1,15 +1,19 @@
-import openai
-from gtts import gTTS
+"""
+This module provides a terminal assistant using OpenAI's GPT-4 model.
+"""
+
 import time
 import os
 import subprocess
+import sys
 from configparser import ConfigParser
 import speech_recognition as sr
 import requests
 from pydub import AudioSegment
 from pydub.playback import play
 
-import sys
+import openai
+from gtts import gTTS
 
 # Redirect stderr to /dev/null
 sys.stderr = subprocess.DEVNULL
@@ -18,24 +22,28 @@ config = ConfigParser()
 CONFIG_NAME = 'testbot_auth.ini'
 
 
-# Config
 def create_config():
+    """
+    Function to create a configuration file.
+    """
     openai_key = input("OpenAI API key: ")
     googleapi_api_key = input("GoogleAPI key: ")
     googleapi_search_engine_id = input("GoogleAPI search engine ID: ")
 
-    config['AUTH'] = {}
     config['AUTH'] = {
         'openai': openai_key,
         'googleapi_key': googleapi_api_key,
         'googleapi_search_id': googleapi_search_engine_id
     }
 
-    with open(CONFIG_NAME, 'w') as f:
-        config.write(f)
+    with open(CONFIG_NAME, 'w', encoding='utf-8') as config_file:
+        config.write(config_file)
 
 
 def check_for_config():
+    """
+    Function to check for a configuration file.
+    """
     if os.path.exists(CONFIG_NAME):
         config.read(CONFIG_NAME)
         return
@@ -51,8 +59,10 @@ SEARCH_ENGINE_ID = config['AUTH']['googleapi_search_id']
 ENDPOINT = "https://www.googleapis.com/customsearch/v1"
 
 
-# Define the function for interacting with the GPT model
 def ask_gpt(prompt, model="gpt-4", tokens=2500):
+    """
+    Function to interact with the GPT model.
+    """
     response = openai.ChatCompletion.create(
         model=model,
         messages=[
@@ -67,42 +77,48 @@ def ask_gpt(prompt, model="gpt-4", tokens=2500):
     return response.choices[0].message['content']
 
 
-# Generate speech from text using gTTS
 def generate_speech(text):
+    """
+    Function to generate speech from text using gTTS.
+    """
     gtts = gTTS(text=text, lang="en-au")
     gtts.save("output.mp3")
 
 
-# Speech recognition function using Google Speech Recognition
 def recognize_speech():
-    r = sr.Recognizer()
+    """
+    Function to recognize speech using Google Speech Recognition.
+    """
+    recognizer = sr.Recognizer()
 
     with sr.Microphone() as source:
         print("Speak:")
-        audio = r.listen(source)
+        audio = recognizer.listen(source)
 
     try:
         print("Recognizing...")
-        text = r.recognize_google(audio)
+        text = recognizer.recognize_google(audio)
         print("You:", text)
         return text
     except sr.UnknownValueError:
         print("Could not understand audio.")
         return ""
-    except sr.RequestError as e:
-        print("Error: {0}".format(e))
+    except sr.RequestError as error:
+        print(f"Error: {error}")
         return ""
 
 
-# Function to perform a Google search using the Custom Search JSON API
 def perform_google_search(query):
+    """
+    Function to perform a Google search using the Custom Search JSON API.
+    """
     params = {
         'key': API_KEY,
         'cx': SEARCH_ENGINE_ID,
         'q': query
     }
 
-    response = requests.get(ENDPOINT, params=params)
+    response = requests.get(ENDPOINT, params=params, timeout=5)
     search_results = response.json()
 
     if 'items' in search_results:
@@ -116,14 +132,18 @@ def perform_google_search(query):
         print("No results found.")
 
 
-# Play the speech audio
 def play_audio():
+    """
+    Function to play the speech audio.
+    """
     sound = AudioSegment.from_mp3("output.mp3")
     play(sound)
 
 
-# Chatbot loop
 def chatbot():
+    """
+    Main chatbot loop.
+    """
     username = input("Enter your username: ")
     print(f"Hi {username}! (Type 'quit' to exit)")
     role = "I am a your helpful assistant. \
@@ -134,11 +154,11 @@ def chatbot():
         user_input = input("You: ")
         if user_input.lower() == "quit":
             break
-        elif user_input.startswith('!search'):
+        if user_input.startswith('!search'):
             query = user_input[8:]
             perform_google_search(query)
             continue
-        elif user_input.strip() == "":
+        if user_input.strip() == "":
             user_input = recognize_speech()
 
         prompt = f"User: {user_input}\n{role}\n"
