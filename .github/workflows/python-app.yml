@@ -26,6 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         wget http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz; tar -xvvf pa_stable_v190700_20210406.tgz; cd portaudio; ./configure; make; sudo make install
+        cd /home/runner/work/terminal-assistant/terminal-assistant
         python3.10 -m pip install --upgrade pip setuptools wheel
         python3.10 -m pip install flake8 pytest
         python3.10 -m pip install -r requirements.txt
