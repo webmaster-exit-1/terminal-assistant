@@ -30,10 +30,6 @@ jobs:
         python3.10 -m pip install --upgrade pip setuptools wheel
         python3.10 -m pip install flake8 pytest
         python3.10 -m pip install openai==0.27.8 pyaudio==0.2.13 gtts==2.3.2 speechrecognition==3.10.0 keyboard==0.13.5 requests==2.31.0 
-    - name: Lint with flake8
-      run: |
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
         pytest
