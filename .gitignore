@@ -1,7 +1,10 @@
-.git_token
-venv
 .dist
 .trunk
 .git_token
+.benchmarks
+.github
+.vscode
+.pytest_cache
 testbot_auth.ini
 output.mp3
+__pycache__
