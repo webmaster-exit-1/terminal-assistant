@@ -1,6 +1,6 @@
 openai==0.27.8
 gtts==2.2.3
-pyaudio==0.2.11
+pyaudio==0.2.13
 speechrecognition==3.8.1
 keyboard==0.13.5
 requests==2.31.0
