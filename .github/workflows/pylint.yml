@@ -17,7 +17,8 @@ jobs:
     - name: Install dependencies
       run: |
         python${{ matrix.python-version }} -m pip install --upgrade pip setuptools wheel
-        python${{ matrix.python-version }} -m pip install -r requirements.txt
+        python${{ matrix.python-version }} -m pip install gTTS==2.3.2 openai==0.27.8 pydub==0.25.1 \ 
+        Requests==2.31.0 SpeechRecognition==3.10.0 keyboard==0.13.5
         python${{ matrix.python-version }} -m pip install pylint
     - name: Analysing the code with pylint
       run: |
