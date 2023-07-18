@@ -145,7 +145,9 @@ def chatbot():
     Main chatbot loop.
     """
     username = input("Enter your username: ")
-    print(f"Hi {username}! (Type '!search' to query Google Search, Press 'Enter' to respond with text input, Press 'Shift+Enter' to respond with voice input, Type 'quit' to exit)")
+    print(f"Hi {username}! (Type '!search' to query Google Search, \
+        Press 'Enter' to respond with text input, \
+        Press 'Shift+Enter' to respond with voice input, Type 'quit' to exit)")
     role = "I am a your helpful assistant. \
         I try hard to give new and interesting replies. \
         I'm also funny, witty, charming, and a great programmer. "
