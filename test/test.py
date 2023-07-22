@@ -1,3 +1,7 @@
+"""
+Module is the main entry point for running the terminal assistant tests.
+"""
+
 import unittest
 
 if __name__ == "__main__":
