@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
-from your_module_name import (ask_gpt, recognize_speech,
-                              perform_google_search, generate_speech, chatbot)
+from terminal_assistant import (ask_gpt, recognize_speech,
+                                perform_google_search, generate_speech, chatbot)
 
 
 class TestTerminalAssistant(unittest.TestCase):
@@ -43,3 +43,4 @@ class TestTerminalAssistant(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
