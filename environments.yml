@@ -1,6 +1,4 @@
 name: terminal-assistant
-channels:
-  - defaults
 dependencies:
   - gTTS=2.3.2
   - openai=0.27.8
