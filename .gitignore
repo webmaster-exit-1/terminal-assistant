@@ -8,3 +8,4 @@
 testbot_auth.ini
 output.mp3
 __pycache__
+venv/*
