@@ -4,7 +4,7 @@
 
 ## Dev Note: I'm just one guy, making code. If you follow or fork this, don't rely on my updated versions to work. Or even be the same code. So, if I were you and you see something I did and like it, grab it and run with it because I'm not a professional. This is just for fun. And I can and will make breaking changes, stupid ideas, and sometimes, just delete repo's and code I'm done with. Learn 2 Code. Have fun. Happy Hacking
 
-> I created this one to be helpfull and help you remain productive </br>
+> I created this version to remain productive and helpfull
 > It's not a jailbroken version so NO naughty stuff
 
 ## Features
