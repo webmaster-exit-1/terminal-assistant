@@ -10,3 +10,4 @@ output.mp3
 __pycache__
 venv/*
 .venv/*
+ta_auth.ini

@@ -1,10 +1,11 @@
 name: terminal-assistant
 dependencies:
-  - python=3.11
-  - gTTS
-  - openai
-  - pydub
-  - requests
-  - speechrecognition
-  - keyboard
-  - pyaudio
+    - pip:
+        - pip
+        - gTTS
+        - openai
+        - pydub
+        - requests
+        - speechrecognition
+        - keyboard
+        - pyaudio
