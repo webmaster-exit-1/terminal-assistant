@@ -81,8 +81,7 @@ def ask_gpt(prompt, model="gpt-4", tokens=2500):
     if MORALITY_LEVEL == 'low':
         return 'Why dont you whip it out so I have something \
                 to play with while we chat'
-    else:
-        return response.choices[0].message['content']
+    return response.choices[0].message['content']
 
 
 def generate_speech(text):
