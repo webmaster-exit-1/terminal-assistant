@@ -45,6 +45,7 @@ def check_for_config():
     """
     Function to check for a configuration file.
     """
+    # pylint: disable=global-statement
     global MORALITY_LEVEL
     if os.path.exists(CONFIG_NAME):
         config.read(CONFIG_NAME)
