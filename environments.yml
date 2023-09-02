@@ -9,3 +9,6 @@ dependencies:
         - speechrecognition
         - keyboard
         - pyaudio
+        - pylama
+        - prospector
+        - mypy
