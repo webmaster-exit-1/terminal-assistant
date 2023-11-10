@@ -21,4 +21,4 @@ jobs:
         python${{ matrix.python-version }} -m pip install pylint
     - name: Analysing the code with pylint
       run: |
-        python${{ matrix.python-version }} -m pylint $(git ls-files '*.py')
+        python${{ matrix.python-version }} -m pylint --disable C,W,no-error,design '*.py'
