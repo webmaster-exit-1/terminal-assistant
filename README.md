@@ -2,22 +2,20 @@
 
 [![Pylint](https://github.com/webmaster-exit-1/terminal-assistant/actions/workflows/pylint.yml/badge.svg)](https://github.com/webmaster-exit-1/terminal-assistant/actions/workflows/pylint.yml)
 
-## Dev Note: I'm just one guy, making code. If you follow or fork this, don't rely on my updated versions to work. Or even be the same code. So, if I were you and you see something I did and like it, grab it and run with it because I'm not a professional. This is just for fun. And I can and will make breaking changes, stupid ideas, and sometimes, just delete repo's and code I'm done with. Learn 2 Code. Have fun. Happy Hacking
-
-> I created this version to remain productive and helpfull
-> It's not a jailbroken version so NO naughty stuff
+> Dev Note: I'm just one guy, making code. If you follow or fork this, don't rely on my updated versions to work. Or even be the same code. So, if I were you and you see something I did and like it, grab it and run with it because I'm not a professional. This is just for fun. And I can and will make breaking changes, stupid ideas, and sometimes, just delete repo's and code I'm done with. Learn 2 Code. Have fun. Happy Hacking
 
 ## Features
 
 * Google Search </br>
 * Google Voice Recognition </br>
 * Google TTS (Speech playback -- Assistants Voice) </br>
-* OpenAI GPT-4
+* OpenAI API Base
 
 ## How to Use
 
 1. Clone the repository to your local machine. </br>
 2. Install the required dependencies:
+3. Download [LM-Studio](https://s3.amazonaws.com/releases.lmstudio.ai/prerelease/LM+Studio-0.2.8-beta-v1.AppImage)
 
 ```bash
 git clone https://github.com/webmaster-exit-1/terminal-assistant
@@ -43,9 +41,13 @@ To enable the custom Google search feature, you need to obtain a Google API key 
 
 #### Language Model
 
-By default, it uses the GPT-4 language model. If you want to change the language model, you can do so by editing the `ask_gpt()` function in the `terminal-assistant.py` file.
+By default, it only uses openai's api base. This updated version now uses LM-Studios as the server backend. You can use whatever compatible LLM you want!
 
 #### Usage
+
+Run `LM-Studio Beta Linux appimage` (get it here: [LM-Studio](https://s3.amazonaws.com/releases.lmstudio.ai/prerelease/LM+Studio-0.2.8-beta-v1.AppImage)) <br>
+- download model, open the server section via left side tab, load model and start server. <br>
+- The server will be waiting for terminal_assistant to be started. <br>
 
 Run the `terminal-assistant.py` file using the python command. </br>
 `"Enter"` To respond with text </br>
