@@ -23,8 +23,10 @@ git clone https://github.com/webmaster-exit-1/terminal-assistant
 cd terminal-assistant
 conda env create -f environment.yml -n terminal_assistant
 virtualenv -p python3.8 venv # or 3.9, 3.10, ect...
-. venv/bin/activate
+conda activate terminal_assistant
+source venv/bin/activate
 pip install -r requirements.txt
+python terminal_assistant.py
 ```
 
 ### Customization
