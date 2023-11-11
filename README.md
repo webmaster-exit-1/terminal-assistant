@@ -10,16 +10,20 @@
 * Google Voice Recognition </br>
 * Google TTS (Speech playback -- Assistants Voice) </br>
 * OpenAI API Base
+* LM-Studio: Download, Configure and Serve LLM's
 
 ## How to Use
 
 1. Clone the repository to your local machine. </br>
-2. Install the required dependencies:
-3. https://lmstudio.ai/ -> Click Linux link to join discord -> Give Yourself Linux Beta Role -> Check Pinned Messages in Linux Beta Channel to get the link to the appimage.
+2. Install the required dependencies.
+3. Get https://lmstudio.ai/ -> Click Linux link to join discord -> Give Yourself Linux Beta Role -> Check Pinned Messages in Linux Beta Channel to get the link to the appimage. This will be the server for the assistant.
 
 ```bash
 git clone https://github.com/webmaster-exit-1/terminal-assistant
 cd terminal-assistant
+conda env create -f environment.yml -n terminal_assistant
+virtualenv -p python3.8 venv # or 3.9, 3.10, ect...
+. venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -45,9 +49,9 @@ By default, it only uses openai's api base. This updated version now uses LM-Stu
 
 #### Usage
 
-Run `LM-Studio Beta Linux appimage` (From the "How to use" #3 section) <br>
-- download model, open the server section via left side tab, load model and start server. <br>
-- The server will be waiting for terminal_assistant to be started. <br>
+Run `LM-Studio Beta Linux appimage` (From the "How to use" #3 section) </br>
+- download model, open the server section via left side tab, load model and start server. </br>
+- The server will be waiting for terminal_assistant to be started. </br>
 
 Run the `terminal-assistant.py` file using the python command. </br>
 `"Enter"` To respond with text </br>
