@@ -15,7 +15,7 @@
 
 1. Clone the repository to your local machine. </br>
 2. Install the required dependencies:
-3. Download [LM-Studio](https://s3.amazonaws.com/releases.lmstudio.ai/prerelease/LM+Studio-0.2.8-beta-v1.AppImage)
+3. https://lmstudio.ai/ -> Click Linux link to join discord -> Give Yourself Linux Beta Role -> Check Pinned Messages in Linux Beta Channel to get the link to the appimage.
 
 ```bash
 git clone https://github.com/webmaster-exit-1/terminal-assistant
@@ -45,7 +45,7 @@ By default, it only uses openai's api base. This updated version now uses LM-Stu
 
 #### Usage
 
-Run `LM-Studio Beta Linux appimage` (get it here: [LM-Studio](https://s3.amazonaws.com/releases.lmstudio.ai/prerelease/LM+Studio-0.2.8-beta-v1.AppImage)) <br>
+Run `LM-Studio Beta Linux appimage` (From the "How to use" #3 section) <br>
 - download model, open the server section via left side tab, load model and start server. <br>
 - The server will be waiting for terminal_assistant to be started. <br>
 
