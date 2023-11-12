@@ -53,14 +53,14 @@ def check_for_config():
 
 check_for_config()
 
-openai.api_base = "http://localhost:1234/v1"
+openai.api_base = "http://localhost:5111/v1"
 openai.api_key = "YOUR_API_KEY_HERE"
 API_KEY = config['AUTH']['googleapi_key']
 SEARCH_ENGINE_ID = config['AUTH']['googleapi_search_id']
 ENDPOINT = "https://www.googleapis.com/customsearch/v1"
 
 
-def ask_gpt(prompt, model="local-model", tokens=2500):
+def ask_gpt(prompt, model="local-model"):
     """
     Function to interact with the GPT model.
     """
@@ -70,9 +70,7 @@ def ask_gpt(prompt, model="local-model", tokens=2500):
             {"role": "system", "content": "I am your helpful assistant"},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=tokens,
-        n=1,
-        stop=None,
+
         temperature=0.7,
     )
     return response.choices[0].message['content']
@@ -94,7 +92,7 @@ def recognize_speech():
 
     with sr.Microphone() as source:
         print("Speak:")
-        audio = recognizer.listen(source)
+        audio = recognizer.listen(source,timeout=15, phrase_time_limit=20)
 
     try:
         print("Recognizing...")
