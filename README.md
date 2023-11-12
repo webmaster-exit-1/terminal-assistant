@@ -56,9 +56,9 @@ Run `LM-Studio Beta Linux appimage` (From the "How to use" #3 section) </br>
 - The server will be waiting for terminal_assistant to be started. </br>
 
 Run the `terminal-assistant.py` file using the python command. </br>
-* `"Enter"` To respond with text </br>
-* `"Shift+Enter"` To respond by voice </br>
-* `!search` to use Google search </br>
+* `Press 'Enter' (With text)` To respond with via text </br>
+* `Press 'Enter' (**Without** text)` To respond by voice </br>
+* `Type '!search'` to use Google search </br>
 > Example: `!search cats` </br>
 * To exit the chatbot, type `quit` or `Ctrl+c`.
 
