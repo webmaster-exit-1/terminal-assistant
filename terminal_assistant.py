@@ -26,7 +26,8 @@ def create_config():
     """
     Function to create a configuration file.
     """
-    openai_key = input("OpenAI API key: ")
+    # Set OpenAI API key to an empty string
+    openai_key = ""
     googleapi_api_key = input("GoogleAPI key: ")
     googleapi_search_engine_id = input("GoogleAPI search engine ID: ")
 
