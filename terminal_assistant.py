@@ -53,7 +53,7 @@ def check_for_config():
 
 check_for_config()
 
-openai.api_base = "http://localhost:5111/v1"
+openai.api_base = "http://localhost:1234/v1"
 openai.api_key = "YOUR_API_KEY_HERE"
 API_KEY = config['AUTH']['googleapi_key']
 SEARCH_ENGINE_ID = config['AUTH']['googleapi_search_id']
