@@ -41,7 +41,7 @@ To enable the custom Google search feature, you need to obtain a Google API key 
 3. Generate an API key for the project. </br>
 4. Get your Google Search Engine ID here: [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/all) </br>
 5. Add your `GOOGLE_API_KEY` when prompted by the script. </br>
-6. Add your `SEARCH_ENGINE_ID` when prompted by the script..
+6. Add your `SEARCH_ENGINE_ID` when prompted by the script.
 
 #### Language Model
 
