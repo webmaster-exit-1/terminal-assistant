@@ -1,9 +1,9 @@
-# Your Personal Terminal Assistant
+# Your Personal Neko Terminal Assistant
 
 [![Pylint](https://github.com/webmaster-exit-1/terminal-assistant/actions/workflows/pylint.yml/badge.svg)](https://github.com/webmaster-exit-1/terminal-assistant/actions/workflows/pylint.yml)
 
 ## Features
-
+* Neko dictionary </br>
 * Google Search </br>
 * Google Voice Recognition </br>
 * Google TTS (Speech playback -- Assistants Voice) </br>
