@@ -15,6 +15,23 @@ from pydub.playback import play
 import openai
 from gtts import gTTS
 
+neko_dict = {
+    "meowster": "master",
+    "neko": "cat",
+    "senpai": "mentor",
+    "kawaii": "cute",
+    "baka": "silly",
+    "senbonzakura": "cherry blossoms",
+    "itadakimasu": "let's eat",
+    "sugoi": "amazing",
+    "konnichiwa": "hello",
+    "sayonara": "goodbye",
+    "arigatou": "thank you",
+    "gomenasai": "I'm sorry",
+    "kohai": "junior",
+    "nyan": "meow",
+}
+
 # Redirect stderr to /dev/null
 sys.stderr = subprocess.DEVNULL
 
