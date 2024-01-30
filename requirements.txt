@@ -1,4 +1,4 @@
-gTTS==2.5.0
+gTTS==2.5.1
 openai==1.10.0
 pydub==0.25.1
 Requests==2.31.0
