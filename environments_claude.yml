@@ -1,0 +1,12 @@
+name: terminal_assistant_claude
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - anthropic
+    - speechrecognition
+    - pydub
+    - gtts
+    - requests

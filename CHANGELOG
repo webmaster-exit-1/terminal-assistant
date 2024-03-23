@@ -1,0 +1,24 @@
+Changelog
+[1.0.0] - 2023-06-09
+Changed
+Updated the module description to mention the usage of Anthropic's API instead of OpenAI's.
+Replaced the OpenAI API usage with Anthropic's API.
+Removed the openai library import.
+Removed the openai.api_base and openai.api_key configurations.
+Imported the Anthropic class from the anthropic library.
+Updated the create_config() function to prompt for the Anthropic API key instead of the OpenAI key.
+Updated the ask_gpt() function to ask_anthropic() and modified it to use Anthropic's API for generating responses.
+Updated the environment.yaml file to include the necessary dependencies for the updated code.
+Removed the openai library from the dependencies.
+Added the anthropic library to the dependencies.
+Removed
+Removed the openai library import and usage.
+Removed the openai.api_base and openai.api_key configurations.
+Added
+Added the anthropic library import and usage.
+Added the Anthropic class import from the anthropic library.
+Added the anthropic library to the environment.yaml file.
+[0.1.0] - 2023-06-08
+Added
+Initial version of the terminal_assistant.py code using OpenAI's API.
+Initial version of the environment.yaml file with dependencies for the OpenAI version. This changelog file provides an overview of the changes made to the terminal_assistant.py code and the environment.yaml file. It highlights the replacement of OpenAI's API with Anthropic's API, the removal of OpenAI-related code and configurations, and the addition of Anthropic-related code and dependencies.

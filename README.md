@@ -1,14 +1,6 @@
-# Your Personal Terminal Assistant
+# Anthropic API for language model interaction
 
-[![Pylint](https://github.com/webmaster-exit-1/terminal-assistant/actions/workflows/pylint.yml/badge.svg)](https://github.com/webmaster-exit-1/terminal-assistant/actions/workflows/pylint.yml)
-
-## Features
-
-* Google Search </br>
-* Google Voice Recognition </br>
-* Google TTS (Speech playback -- Assistants Voice) </br>
-* OpenAI API Base
-* LM-Studio: Download, Configure and Serve LLM's
+* LM-Studio: Download, Configure and Serve LLMs
 
 ## How to Use
 
@@ -20,10 +12,7 @@
 git clone https://github.com/webmaster-exit-1/terminal-assistant
 cd terminal-assistant
 conda env create -f environment.yml -n terminal_assistant
-virtualenv -p python3.8 venv # or 3.9, 3.10, ect...
 conda activate terminal_assistant
-source venv/bin/activate
-pip install -r requirements.txt
 python terminal_assistant.py
 ```
 
@@ -45,16 +34,18 @@ To enable the custom Google search feature, you need to obtain a Google API key 
 
 #### Language Model
 
-By default, it only uses openai's api base. This updated version now uses LM-Studios as the server backend. You can use whatever compatible LLM you want!
+This updated version now uses Anthropic's API for language model interaction instead of OpenAI's API base.
 
 #### Usage
 
 Run `LM-Studio Beta Linux appimage` (From the "How to use" #3 section) </br>
-- download model, open the server section via left side tab, load model and start server. </br>
+
+- Download model, open the server section via left side tab, load model and start server. </br>
 - The server will be waiting for terminal_assistant to be started. </br>
 
 Run the `terminal-assistant.py` file using the python command. </br>
-* `Press 'Enter' (With text)` To respond with via text </br>
+
+* `Press 'Enter' (With text)` To respond via text </br>
 * `Press 'Enter' (**Without** text)` To respond by voice </br>
 * `Type '!search'` to use Google search </br>
 > Example: `!search cats` </br>
