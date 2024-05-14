@@ -2,6 +2,6 @@ gTTS==2.5.1
 openai==1.28.1
 pydub==0.25.1
 Requests==2.31.0
-SpeechRecognition==3.10.3
+SpeechRecognition==3.10.4
 keyboard==0.13.5
 pyaudio==0.2.14
