@@ -1,5 +1,5 @@
 gTTS==2.5.4
-openai==1.59.3
+openai==1.59.6
 pydub==0.25.1
 Requests==2.32.3
 SpeechRecognition==3.13.0
